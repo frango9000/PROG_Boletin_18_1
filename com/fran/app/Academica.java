@@ -6,7 +6,7 @@
 package com.fran.app;
 
 import com.fran.data.*;
-
+import java.util.Scanner;
 /**
  *
  * @author fsancheztemprano
@@ -16,12 +16,11 @@ public class Academica {
     
     private int matricula;
     private String nombre;
-    private int nota;
+    private float nota;
     private Personal personal;
 
-    public Academica(String nombre, int nota, Personal personal) {
+    public Academica(String nombre, Personal personal) {
         this.nombre = nombre;
-        this.nota = nota;
         this.personal = personal;
         this.matricula = numReferencia;
         numReferencia++;
@@ -39,17 +38,38 @@ public class Academica {
         return nombre;
     }
 
-    public int getNota() {
+    public float getNota() {
         return nota;
+    }
+
+    public float calcularNota() {
+        return getNota();
     }
 
     public Personal getPersonal() {
         return personal;
     }
+    
+    public float pedirNota(){
+        Scanner scan = new Scanner(System.in);
+        float fl;
+        do{
+            System.out.println("Introduce Nota (0,10) :");
+            fl=scan.nextFloat();
+        }while(!verificarNota(fl));
+        return fl;
+    }
+    public boolean verificarNota(float nota){
+        return !(nota > 10 || nota < 0);
+    }
+
+    public void setNota(float nota) {
+            this.nota = nota;
+    }
 
     @Override
     public String toString() {
-        return "Academica{" + "matricula=" + matricula + ", nombre=" + nombre + ", nota=" + nota + ", personal=" + personal + '}';
+        return "Academica{" + "matricula=" + matricula + ", nombre=" + nombre + ", nota=" + nota + ", correo=" + personal.getCorreo() + ", telefono=" + personal.getTelefono() + '}';
     }
     
     

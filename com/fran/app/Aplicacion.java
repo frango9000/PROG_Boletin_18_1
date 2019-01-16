@@ -5,6 +5,8 @@
  */
 package com.fran.app;
 
+import com.fran.data.Personal;
+import java.util.Scanner;
 /**
  *
  * @author fsancheztemprano
@@ -15,7 +17,14 @@ public class Aplicacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Personal alum = new Personal(986000000, "correo@dominio.com");
+        Scanner scan = new Scanner(System.in);  
+        
+        Academica academica = new Academica("Francisco", new Personal(986000000, "correo@dominio.com"));
+        
+        academica.setNota(academica.pedirNota());
+        
+        System.out.println(academica.toString());   
     }
     
 }
